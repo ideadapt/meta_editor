@@ -116,8 +116,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check meta.txt (original still there, new missing)
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true,  strpos($lines[0], "/image001.jpg") !== false);
-        $this->assertEquals(false, strpos($lines[0], "/image006.jpg"));
+        $this->assertEquals(true,  strpos($lines[0], " image001.jpg") !== false);
+        $this->assertEquals(false, strpos($lines[0], " image006.jpg"));
     }
     
     public function testGenerateMetaAutoAdd(){
@@ -146,8 +146,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check meta.txt (original still there, new added)
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image001.jpg") !== false);
-        $this->assertEquals(true, strpos($lines[5], "/image006.jpg") !== false);
+        $this->assertEquals(true, strpos($lines[0], " image001.jpg") !== false);
+        $this->assertEquals(true, strpos($lines[5], " image006.jpg") !== false);
     }
         
     public function testGenerateMetaAutoDelete(){
@@ -177,7 +177,7 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check meta.txt (old missing)
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image001.jpg") === false);      
+        $this->assertEquals(true, strpos($lines[0], " image001.jpg") === false);      
     }
     
     
@@ -210,8 +210,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check meta.txt (old missing, new added)
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image001.jpg") == false);  
-        $this->assertEquals(true, strpos($lines[3], "/image006.jpg") !== false);
+        $this->assertEquals(true, strpos($lines[0], " image001.jpg") == false);  
+        $this->assertEquals(true, strpos($lines[3], " image006.jpg") !== false);
     }
     
     // TODO: test field values (column mappings), test canImport
@@ -239,7 +239,7 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta_en.txt");
         $lines = $metafile->getContentAsArray();
         $this->assertEquals(true, count($lines) === 1);
-        $this->assertEquals(true, strpos($lines[0], "/image001.jpg") !== false);        
+        $this->assertEquals(true, strpos($lines[0], " image001.jpg") !== false);        
     }
     
     public function testCutItemToFront(){
@@ -263,8 +263,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check FS       
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image002.jpg") !== false); 
-        $this->assertEquals(true, strpos($lines[1], "/image001.jpg") !== false); 
+        $this->assertEquals(true, strpos($lines[0], " image002.jpg") !== false); 
+        $this->assertEquals(true, strpos($lines[1], " image001.jpg") !== false); 
     }    
     
     public function testCutItemNotToFront(){
@@ -289,8 +289,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check FS       
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image002.jpg") !== false); 
-        $this->assertEquals(true, strpos($lines[1], "/image001.jpg") !== false); 
+        $this->assertEquals(true, strpos($lines[0], " image002.jpg") !== false); 
+        $this->assertEquals(true, strpos($lines[1], " image001.jpg") !== false); 
     }
 
     public function testDeleteItem(){
@@ -308,8 +308,8 @@ class meta_editor_test extends PHPUnit_Framework_TestCase
         // check FS
         $metafile = new File($this->TLTestRoot."/nature/gallery1/meta.txt");
         $lines = $metafile->getContentAsArray();
-        $this->assertEquals(true, strpos($lines[0], "/image001.jpg") === false); 
-        $this->assertEquals(true, strpos($lines[0], "/image002.jpg") !== false); 
+        $this->assertEquals(true, strpos($lines[0], " image001.jpg") === false); 
+        $this->assertEquals(true, strpos($lines[0], " image002.jpg") !== false); 
     }
 }
 ?>
