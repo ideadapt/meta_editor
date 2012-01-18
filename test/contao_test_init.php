@@ -1,12 +1,14 @@
-<?php
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 /**
- * TYPOlight webCMS
- * Copyright (C) 2005 Leo Feyer
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
  *
  * This program is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
- * version 2.1 of the License, or (at your option) any later version.
+ * version 3 of the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -15,12 +17,12 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
- * Software Foundation website at http://www.gnu.org/licenses/.
- *
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+
  * PHP version 5
- * @copyright  Ueli Kunz 2010
+ * @copyright  Ueli Kunz 2011
  * @author     Ueli Kunz <kunz@ideadapt.net>
- * @package    ia.contao.system.modules.meta_editor
+ * @package    ia.contao.system.modules.meta_editor.test
  * @license    LGPL
  */
 
@@ -28,9 +30,10 @@
 /**
  * required init steps to run PHPUnit within contao 
  * Provide all methods for the backend module meta_editor
- * @copyright  Ueli Kunz 2010
+ * @copyright  Ueli Kunz 2011
  * @author     Ueli Kunz <kunz@ideadapt.net>
  */
+
 define('TL_MODE', 'BE');
 
 if (function_exists('my_autoload') == false){
