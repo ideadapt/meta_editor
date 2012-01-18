@@ -27,6 +27,7 @@
         <div class="tl_submit_container">
             <input type="submit" name="save" id="save" class="tl_submit" 
 			       accesskey="s" value="<?php echo $this->submitValue ?>"/>
+			<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">				   
         </div>
     </div>
 </form>
