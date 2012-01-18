@@ -23,7 +23,7 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
-# contao test
+# contao module
 !.htaccess
-log/**
-log/**/*
+*/log/**
+*/log/**/*
