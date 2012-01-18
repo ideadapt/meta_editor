@@ -37,9 +37,9 @@
 // override localconfig values to use test database
 $GLOBALS['TL_CONFIG']['dbDriver']    = 'MySQL';
 $GLOBALS['TL_CONFIG']['dbUser']      = 'root';
-$GLOBALS['TL_CONFIG']['dbPass']      = '';
+$GLOBALS['TL_CONFIG']['dbPass']      = 'root';
 $GLOBALS['TL_CONFIG']['dbHost']      = 'localhost';
-$GLOBALS['TL_CONFIG']['dbDatabase']  = 'contao_dev';
+$GLOBALS['TL_CONFIG']['dbDatabase']  = '';
 $GLOBALS['TL_CONFIG']['dbPort']      = 3306;
 $GLOBALS['TL_CONFIG']['dbPconnect']  = false;
 $GLOBALS['TL_CONFIG']['dbCharset']   = 'UTF8';
