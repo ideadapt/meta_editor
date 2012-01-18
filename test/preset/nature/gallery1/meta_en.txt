@@ -1,0 +1,1 @@
+imported001.jpg = I am image001.jpg |  | tl_files/MetaEditorTest/nature/gallery1/image001.jpg

@@ -1,0 +1,75 @@
+.header_scanimport {
+    background: url("icon_header_scanimport.png") no-repeat scroll left center transparent;
+    padding: 2px 0 3px 20px;
+}
+
+.header_import {
+    background: url("icon_header_redirect.gif") no-repeat scroll left center transparent;
+    padding: 2px 0 3px 20px;
+}
+
+.sortable li:hover {
+    cursor: move;
+}
+
+.cte_type {
+    overflow: hidden; /* lange titel abschneiden, da sonst item operation button nicht mehr erreichbar*/
+}
+
+.metaitem a.download {
+    padding-left: 30px;
+    background-repeat: no-repeat;
+    display: block;
+    height: 24px;
+    padding-left: 25px;
+    padding-top: 2px;
+}
+
+.metaitem div.image_container {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.list_metafile_label div {
+    margin-bottom: 6px;
+}
+
+.list_metafile_label div.title {
+}
+
+.list_metafile_label .state.notpublished, .list_metafile_label .state.filenotfound {
+    color: inherit;
+}
+
+.list_metafile_label .state.published.filenotfound {
+    /*contao error label color*/
+    color: #C05151;
+}
+
+/* edit tl_mytable */
+/*#tl_metafile .tl_submit_container #save,
+ #tl_metafile .tl_submit_container #saveNclose,*/
+#tl_metafile .tl_submit_container #saveNback, #tl_metafile .tl_submit_container #saveNedit
+/*#tl_metafile .tl_submit_container #saveNcreate*/ {
+    display: none;
+}
+
+/*#tl_metaitem .tl_submit_container #save,
+ #tl_metaitem .tl_submit_container #saveNclose,*/
+#tl_metaitem .tl_submit_container #saveNback, #tl_metaitem .tl_submit_container #saveNedit
+/*#tl_metaitem .tl_submit_container #saveNcreate*/ {
+    display: none;
+}
+
+/*edit multiple: parent items*/
+#tl_select .list_view + div >.tl_submit_container #delete, #tl_select .list_view + div >.tl_submit_container #cut, #tl_select .list_view + div >.tl_submit_container #copy, #tl_select .list_view + div >.tl_submit_container #override, #tl_select .list_view + div >.tl_submit_container #edit {
+    display: none;
+}
+
+/*edit multiple: child records*/
+/*#tl_select .parent_view+div>.tl_submit_container #delete,*/
+#tl_select .parent_view + div >.tl_submit_container #cut, #tl_select .parent_view + div >.tl_submit_container #copy, #tl_select .parent_view + div >.tl_submit_container #override
+/*#tl_select .parent_view+div>.tl_submit_container #edit*/ {
+    display: none;
+}
