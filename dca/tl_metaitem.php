@@ -158,7 +158,7 @@ $GLOBALS['TL_DCA'][$ctable] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG'][$ctable]['description'],
 			'inputType'               => 'textarea',
-			'eval'                    => array('mandatory'=>false,'rte'=>'tinyMCE','cols'=>40,'rows'=>5)
+			'eval'                    => array('mandatory'=>false,'rte'=>($GLOBALS['TL_CONFIG']['meta_editor_deactivate_rte'] !== true ? 'tinyMCE' : null),'cols'=>40,'rows'=>5)
 		)
 	)
 );
