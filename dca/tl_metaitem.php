@@ -60,7 +60,8 @@ $GLOBALS['TL_DCA'][$ctable] = array
 		(
 			array('meta_editor', 'oncut_metaitem')
 		),
-		'onload_callback' => array(
+		'onload_callback' => array
+		(
 			array('meta_editor', 'onload_metaitem')
 		)
 	),
@@ -158,7 +159,7 @@ $GLOBALS['TL_DCA'][$ctable] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG'][$ctable]['description'],
 			'inputType'               => 'textarea',
-			'eval'                    => array('mandatory'=>false,'rte'=>'tinyMCE','cols'=>40,'rows'=>5)
+			'eval'                    => array('mandatory'=>false,'cols'=>40,'rows'=>5)
 		)
 	)
 );

@@ -128,7 +128,7 @@ $GLOBALS['TL_DCA'][$ptable] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => 'title,metatype,language;folder;'
+		'default'                     => 'title,metatype,language,rte;folder;'
 	),
 
 	// Fields
@@ -163,10 +163,18 @@ $GLOBALS['TL_DCA'][$ptable] = array
 			'label'                   => &$GLOBALS['TL_LANG'][$ptable]['language'],
 			'inputType'               => 'text',
 			'filter'				  => true,
-			'eval'                    => array('rgxp'=>'alpha','maxlength'=>2,'nospace'=>true,'doNotCopy'=>true),
+			'eval'                    => array('rgxp'=>'alpha','maxlength'=>2,'nospace'=>true,'doNotCopy'=>true,'tl_class'=>'w50'),
 			'save_callback'			  => array(
 				array('meta_editor','save_language')
 			)
+		),
+		'rte' => array
+		(
+            'label'                   => &$GLOBALS['TL_LANG'][$ptable]['rte'],
+            'default'                 => 'tinyMCE',
+            'inputType'               => 'select',
+            'options_callback'        => array('tl_metafile', 'getRichTextEditors'),
+            'eval'                    => array('includeBlankOption' => true, 'tl_class'=>'w50'),
 		),
 		/* this field is required by the import form only, its not used in the metafile palette.*/
 		'file' => array
@@ -179,14 +187,8 @@ $GLOBALS['TL_DCA'][$ptable] = array
 );
 
 
-class tl_metafile extends BackendModule {
-	
-	protected function compile() {
-	}
-
-	public function generate() {
-	}
-	
+class tl_metafile extends Backend
+{
 	/**
 	 * Interface methode. Required to handle ajax toggle requests.
 	 * @param $id		id of the tl_metafile record to change visibility
@@ -195,6 +197,20 @@ class tl_metafile extends BackendModule {
 	public function toggleVisibility($id, $newState){
 		$i = new meta_editor();
 		$i->togglePublished($id, $newState);		
+	}
+	
+	/**
+	 Get all available rich text editor configurations.
+	 */
+	public function getRichTextEditors()
+	{
+		$configs=array();
+		foreach(array_diff(scandir(sprintf('%s/system/config', TL_ROOT)), Array( ".", ".." )) as $name)
+		{
+			if((strpos($name, 'tiny')===0) && (substr($name, -4, 4)=='.php'))
+				$configs[]=substr($name, 0, -4);
+		}
+		return $configs;
 	}
 }
 ?>

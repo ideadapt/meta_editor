@@ -11,6 +11,7 @@ CREATE TABLE `tl_metafile` (
   `title` varchar(255) NOT NULL default '',
   `folder` varchar(255) NOT NULL default '',
   `language` varchar(2) NOT NULL default '',
+  `rte` varchar(255) NOT NULL default '',
   `metatype` char(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 --  UNIQUE KEY `uk_folder_language` (`folder`,`language`)
