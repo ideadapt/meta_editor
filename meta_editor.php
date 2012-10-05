@@ -383,14 +383,13 @@ class meta_editor extends BackendModule {
 	public function onload_metaitem(DataContainer $dc){
 
         // cut will request onload_metaitem a second time, without any act.
-        // edit as well
-        if($this->Input->get('act') == "cut" || $this->Input->get('act') == "edit"){
-            return 0;
+        if($this->Input->get('act') == "cut"){
+            return;
         }
 
 		$pid = $this->getParentId($dc);
 
-		$dbMetafile = $this->Database->prepare("SELECT folder,metatype FROM {$this->ptable} WHERE id=?");
+		$dbMetafile = $this->Database->prepare("SELECT folder,metatype,rte FROM {$this->ptable} WHERE id=?");
         $dbMetafile = $dbMetafile->limit(1)->executeUncached($pid);
 		if($dbMetafile->numRows){
 			$dca = &$GLOBALS['TL_DCA'][$this->ctable]['fields']['filename'];
@@ -404,6 +403,9 @@ class meta_editor extends BackendModule {
 			}else{
 				// downloaditems
 			}
+		    if(strlen($dbMetafile->rte)){
+		        $GLOBALS['TL_DCA'][$this->ctable]['fields']['description']['eval']['rte'] = $dbMetafile->rte;
+		    }
 		}else{
 			$this->log("No entry in {$this->ctable} with id '{$pid}'.", "meta_editor onload_metaitem", TL_ERROR);
 		}
@@ -683,9 +685,14 @@ class meta_editor extends BackendModule {
         if(trim($this->Input->get('pid')) !== ''){
             $pid = $this->Input->get('pid');
         }else if($this->Input->get('act') == 'edit' || $this->Input->get('act') == 'editAll'){
-			$pid = $dc->activeRecord->pid;
-		}
-		else{
+            //activeRecord not set at onload_callback
+            if(!$dc->activeRecord){
+                $record = $this->Database->prepare("SELECT pid FROM {$this->ctable} WHERE id=?")->limit(1)->executeUncached($dc->id)->row();
+                $pid = $record['pid'];
+            }else{
+                $pid = $dc->activeRecord->pid;
+            }
+		}else{
 			$pid = $dc->id;
 		}
 		return $pid;
@@ -714,6 +721,7 @@ class meta_editor extends BackendModule {
 	 * @param $dc:DataContainer	not used, contao event callback constraint
 	 */
 	public function save_language($varValue, DataContainer $dc){
+	    $varValue = strtolower($varValue);
 		$objUnique = $this->Database->prepare("SELECT * FROM {$this->ptable} WHERE language=? AND folder=? AND id!=?")
 		->execute($varValue, $dc->activeRecord->folder, $dc->id);
 
